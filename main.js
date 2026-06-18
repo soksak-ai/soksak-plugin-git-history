@@ -68,6 +68,7 @@ function mountHistory(app, container, viewCtx) {
   );
   const countEl = el("span", DIM, "");
   const refresh = refreshButton("새로고침");
+  refresh.dataset.node = "refresh"; // 구조적 주소 노출(단일 요소)
   refresh.addEventListener("click", () => void loadPage(true));
   bar.append(countEl, refresh);
   const body = el(
@@ -100,6 +101,7 @@ function mountHistory(app, container, viewCtx) {
 
   function commitRow(c) {
     const r = el("div", "padding:5px 6px;border-radius:5px;cursor:pointer;");
+    r.dataset.node = `commit/${c.hash}`; // 동적 목록: 안정키 = 전체 커밋 해시(소문자 hex)
     r.addEventListener("mouseenter", () => (r.style.background = "var(--inset)"));
     r.addEventListener("mouseleave", () => (r.style.background = "transparent"));
     const line1 = el("div", "display:flex;gap:6px;align-items:baseline;min-width:0;");
@@ -132,6 +134,7 @@ function mountHistory(app, container, viewCtx) {
       body.appendChild(note("불러오는 중…"));
     } else if (!ended && commits.length > 0) {
       const more = button("더 보기", `다음 ${PAGE}개`);
+      more.dataset.node = "more"; // 구조적 주소 노출(단일 요소)
       more.style.alignSelf = "center";
       more.addEventListener("click", () => void loadPage(false));
       body.appendChild(more);

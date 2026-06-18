@@ -20,6 +20,20 @@
           "sidebar-right"
         ]
       }
+    ],
+    "nodes": [
+      {
+        "id": "commit",
+        "description": "커밋 행 (클릭하면 상세 보기). data-node=commit/<커밋 해시>"
+      },
+      {
+        "id": "more",
+        "description": "더 보기 버튼 (다음 페이지 로드)"
+      },
+      {
+        "id": "refresh",
+        "description": "새로고침 버튼 (목록 처음부터 재로드)"
+      }
     ]
   }
 }
